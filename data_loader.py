@@ -46,8 +46,8 @@ def drop_sessions_with_no_spikes(data_to_analyze):
 
 
 # Load firing data and behavioural variable for a given area
-def load_data_for_model(brain_area, behavioural_feature, brain_groups):
-	all_data = get_alldat()
+def load_data_for_model(all_data, brain_area, behavioural_feature, brain_groups):
+	# all_data = get_alldat()
 	data_to_analyze = pd.DataFrame()  # make empty df
 	# add behavioural feature to df
 	data_to_analyze = load_behavioural_feature(data_to_analyze, all_data, behavioural_feature)
@@ -56,13 +56,13 @@ def load_data_for_model(brain_area, behavioural_feature, brain_groups):
 	return data_to_analyze
 
 
-def load_data(brain_area='MOp', feature='face'):
+def load_data(all_data, brain_area='MOp', feature='face'):
 	print('Loading data...')
 	brain_groups = np.array(["VISa", "VISam", "VISl", "VISp", "VISpm", "VISrl","CL", "LD", "LGd", "LH", "LP", "MD", "MG", "PO", "POL", "PT", "RT", "SPF", "TH", "VAL", "VPL", "VPM","CA", "CA1", "CA2", "CA3", "DG", "SUB", "POST","ACA", "AUD", "COA", "DP", "ILA", "MOp", "MOs", "OLF", "ORB", "ORBm", "PIR", "PL", "SSp", "SSs", "RSP","TT","APN", "IC", "MB", "MRN", "NB", "PAG", "RN", "SCs", "SCm", "SCig", "SCsg", "ZI","ACB", "CP", "GPe", "LS", "LSc", "LSr", "MS", "OT", "SNr", "SI","BLA", "BMA", "EP", "EPd", "MEA"])
-	data_to_analyze = load_data_for_model(brain_area=brain_area, behavioural_feature=feature, brain_groups=brain_groups)
+	data_to_analyze = load_data_for_model(all_data, brain_area=brain_area, behavioural_feature=feature, brain_groups=brain_groups)
 	data_to_analyze = drop_sessions_with_no_spikes(data_to_analyze)
 	# print(data_to_analyze.head())
 	return data_to_analyze
 
 
-# data_to_analyze = load_data()
+# data_to_analyze = load_data(alldat)
