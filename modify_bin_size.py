@@ -7,6 +7,7 @@ def change_bin_size(array_in, window_size=10):
 
 
 def convert_data_to_bigger_bin_size_spikes(data_to_analyze, window=10):
+    print('Change binning of spike data.')
     spikes_big_bins = []
     spikes_big_bins_original_shape = []
     for session_id, session in data_to_analyze.iterrows():
