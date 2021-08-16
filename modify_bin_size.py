@@ -31,23 +31,23 @@ def convert_data_to_bigger_bin_size_spikes(data_to_analyze, window=10):
 ### might not be solely bin size based? Might have to move this later
 
 ## reshape motion energy
-  def reshape_face_data(data_to_analyze, session_id=0, trial_id=None, spikes_column_name='spikes'):
-    # Make input features for model
-    session_to_analyze = data_to_analyze[spikes_column_name].iloc[session_id]
-    print('number of spikes')
-    print(data_to_analyze.number_of_spikes.iloc[session_id])
-    #print(session_to_analyze)
-    print('Number of neurons in this session: ' + str(session_to_analyze.shape[0]))
+def reshape_face_data(data_to_analyze, session_id=0, trial_id=None, spikes_column_name='spikes'):
+  # Make input features for model
+  session_to_analyze = data_to_analyze[spikes_column_name].iloc[session_id]
+  print('number of spikes')
+  print(data_to_analyze.number_of_spikes.iloc[session_id])
+  #print(session_to_analyze)
+  print('Number of neurons in this session: ' + str(session_to_analyze.shape[0]))
 
-    session_to_analyze_reshaped = session_to_analyze[-1] # all trials 
-    face_data = data_to_analyze.face.iloc[session_id][0,-1]  # all trials
+  session_to_analyze_reshaped = session_to_analyze[-1] # all trials 
+  face_data = data_to_analyze.face.iloc[session_id][0,-1]  # all trials
 
-    if trial_id != None:
-      session_to_analyze_reshaped = session_to_analyze[:,trial_id,:] # one trial 
-      face_data = data_to_analyze.face.iloc[session_id][0,trial_id]  # one trial 
+  if trial_id != None:
+    session_to_analyze_reshaped = session_to_analyze[:,trial_id,:] # one trial 
+    face_data = data_to_analyze.face.iloc[session_id][0,trial_id]  # one trial 
 
 
-    #print(session_to_analyze_reshaped.shape)
-    #print(face_data.shape)
-    return face_data, session_to_analyze_reshaped
+  #print(session_to_analyze_reshaped.shape)
+  #print(face_data.shape)
+  return face_data, session_to_analyze_reshaped
 
