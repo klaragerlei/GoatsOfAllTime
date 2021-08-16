@@ -1,4 +1,5 @@
 def change_bin_size(array_in, window_size=10):
+    import numpy as np
     array_with_different_bins = np.add.reduceat(array_in, range(0, len(array_in), window_size))
     return array_with_different_bins
 
